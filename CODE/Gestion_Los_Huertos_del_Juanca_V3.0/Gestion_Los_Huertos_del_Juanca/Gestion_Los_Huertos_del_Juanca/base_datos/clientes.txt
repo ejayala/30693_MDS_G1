@@ -1,3 +1,3 @@
 1001;Eatan;Ayala;1753039948;0969979884;Quito Carapungo;Activo
-1002;Maria;Lopez;1722706320;0998086637;Latacunga;Activo
+1002;Maria;Lopez;1722706320;0998086637;Latacunga-Belisario;Inactivo
 1003;Juan;Diaz;1713858023;0981111111;Ambato;Inactivo

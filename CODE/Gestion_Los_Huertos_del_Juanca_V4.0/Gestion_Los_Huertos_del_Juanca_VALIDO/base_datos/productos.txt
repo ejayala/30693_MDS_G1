@@ -1,0 +1,2 @@
+1;PROD001;Frutillas;Balde;Medianas;5.0;6;Disponible
+2;PROD002;miel;tarriba;1;2.0;1;Disponible
