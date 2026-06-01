@@ -1,0 +1,1 @@
+1;PROD001;Frutillas;Balde;Medianas;5.0;6;Disponible
