@@ -1,0 +1,2 @@
+1;PROD-1;Frutillas;Balde;Grande;1.0;12;Disponible
+2;PROD-2;Nombre;Balde 1 kg;Pequeño;1.0;0;No Disponible
