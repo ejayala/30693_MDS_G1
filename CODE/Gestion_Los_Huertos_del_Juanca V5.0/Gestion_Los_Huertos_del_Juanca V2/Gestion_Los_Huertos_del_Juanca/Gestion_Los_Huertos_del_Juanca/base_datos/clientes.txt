@@ -1,3 +1,0 @@
-1001;Eatan;Ayala;1753039948;0969979884;Quito Carapungo;Activo
-1002;Maria;Lopez;1722706320;0998086637;Latacunga;Activo
-

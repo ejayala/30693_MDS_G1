@@ -8,7 +8,7 @@ import javax.swing.table.DefaultTableModel;
 import views.Frm_Principal;
 
 public class ClienteService {
-private Frm_Principal vista;
+    private Frm_Principal vista;
     private ClienteRepository dao;
 
     public ClienteService(Frm_Principal vista, ClienteRepository dao) {
@@ -18,6 +18,9 @@ private Frm_Principal vista;
         generarID();
         vista.txt_IDcliente.setEnabled(false);
         cargarTabla();
+        javax.swing.SwingUtilities.invokeLater(() -> {
+            verificarCumpleaniosHoy();
+        });
     }
 
     private void iniciarEventos() {
@@ -58,7 +61,7 @@ private Frm_Principal vista;
         return apellido.matches("^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$");
     }
 
-    private boolean validarDatos() {
+    private boolean validarDatos(String idActual) {
         String nombre = vista.txt_nomcliente.getText().trim();
         String apellido = vista.txt_apecliente.getText().trim();
         String telefono = vista.txt_telefono.getText().trim();
@@ -85,6 +88,15 @@ private Frm_Principal vista;
             JOptionPane.showMessageDialog(vista, "Cédula ecuatoriana inválida");
             return false;
         }
+        if (vista.jd_fechaCumpleanios.getDate() == null) {
+            JOptionPane.showMessageDialog(vista, "Debe seleccionar una fecha de cumpleaños");
+            return false;
+        }
+        if (dao.existeCedula(cedula, idActual)) {
+            JOptionPane.showMessageDialog(vista, "Error: Ya existe un cliente registrado con el número de cédula: " + cedula);
+            return false;
+        }
+
         return true;
     }
 
@@ -112,11 +124,19 @@ private Frm_Principal vista;
         } else {
             vista.btn_inactivo.setSelected(true);
         }
+        if (cliente.getFechaCumpleanios() != null) {
+            vista.jd_fechaCumpleanios.setDate(java.sql.Date.valueOf(cliente.getFechaCumpleanios()));
+        } else {
+            vista.jd_fechaCumpleanios.setDate(null);
+        }
     }
 
     private void guardarCliente() {
-        if (!validarDatos()) return;
+        if (!validarDatos(vista.txt_IDcliente.getText())) return;
         String estado = vista.btn_activo.isSelected() ? "Activo" : "Inactivo";
+        java.util.Date fechaData = vista.jd_fechaCumpleanios.getDate();
+        java.time.LocalDate fechaCumple = new java.sql.Date(fechaData.getTime()).toLocalDate();
+
         Cliente cliente = new Cliente(
                 vista.txt_IDcliente.getText(),
                 vista.txt_nomcliente.getText().trim(),
@@ -124,7 +144,9 @@ private Frm_Principal vista;
                 vista.txt_cedula.getText().trim(),
                 vista.txt_telefono.getText().trim(),
                 vista.txt_direccion.getText().trim(),
-                estado);
+                estado,
+                fechaCumple);
+
         if (dao.guardarCliente(cliente)) {
             JOptionPane.showMessageDialog(vista, "Cliente guardado");
             cargarTabla();
@@ -134,8 +156,11 @@ private Frm_Principal vista;
     }
 
     private void modificarCliente() {
-        if (!validarDatos()) return;
+        if (!validarDatos(vista.txt_IDcliente.getText())) return;
         String estado = vista.btn_activo.isSelected() ? "Activo" : "Inactivo";
+        java.util.Date fechaData = vista.jd_fechaCumpleanios.getDate();
+        java.time.LocalDate fechaCumple = new java.sql.Date(fechaData.getTime()).toLocalDate();
+
         Cliente cliente = new Cliente(
                 vista.txt_IDcliente.getText(),
                 vista.txt_nomcliente.getText().trim(),
@@ -143,7 +168,9 @@ private Frm_Principal vista;
                 vista.txt_cedula.getText().trim(),
                 vista.txt_telefono.getText().trim(),
                 vista.txt_direccion.getText().trim(),
-                estado);
+                estado,
+                fechaCumple);
+
         if (dao.modificarCliente(cliente)) {
             JOptionPane.showMessageDialog(vista, "Cliente modificado");
             cargarTabla();
@@ -185,10 +212,13 @@ private Frm_Principal vista;
         modelo.addColumn("Telefono");
         modelo.addColumn("Direccion");
         modelo.addColumn("Estado");
+        modelo.addColumn("Cumpleaños");
+
         for (Cliente c : dao.listarClientes()) {
             modelo.addRow(new Object[]{
                 c.getId(), c.getNombre(), c.getApellido(),
-                c.getCedula(), c.getTelefono(), c.getDireccion(), c.getEstado()
+                c.getCedula(), c.getTelefono(), c.getDireccion(), c.getEstado(),
+                c.getFechaCumpleanios()
             });
         }
         vista.tbl_clientes.setModel(modelo);
@@ -203,6 +233,7 @@ private Frm_Principal vista;
         vista.txt_IDclibuscar.setText("");
         vista.btn_activo.setSelected(false);
         vista.btn_inactivo.setSelected(false);
+        vista.jd_fechaCumpleanios.setDate(null);
     }
 
     private void generarID() {
@@ -210,5 +241,31 @@ private Frm_Principal vista;
         vista.txt_IDcliente.setText(dao.generarNuevoID());
         vista.txt_IDcliente.setEnabled(false);
     }
-     
+    
+    private void verificarCumpleaniosHoy() {
+        java.time.LocalDate hoy = java.time.LocalDate.now();
+        int mesHoy = hoy.getMonthValue();
+        int diaHoy = hoy.getDayOfMonth();
+
+        java.util.ArrayList<Cliente> clientes = dao.listarClientes();
+
+        for (Cliente c : clientes) {
+            if (c.getFechaCumpleanios() != null && c.getEstado().equals("Activo")) {
+                int mesCliente = c.getFechaCumpleanios().getMonthValue();
+                int diaCliente = c.getFechaCumpleanios().getDayOfMonth();
+                if (mesHoy == mesCliente && diaHoy == diaCliente) {
+                    String mensaje = "🎉 " + c.getNombre() + " " + c.getApellido() + " cumple años el día de hoy. 🎉";
+                    mostrarAlertaEsquina(mensaje);
+                }
+            }
+        }
+    }
+    
+    private void mostrarAlertaEsquina(String mensaje) {
+        JOptionPane optionPane = new JOptionPane(mensaje, JOptionPane.INFORMATION_MESSAGE);
+        javax.swing.JDialog dialogo = optionPane.createDialog(vista, "Alerta de Cumpleaños");
+        dialogo.setLocation(10, 10);
+        dialogo.setVisible(true);
+        dialogo.dispose();
+}
 }

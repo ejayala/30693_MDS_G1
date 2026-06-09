@@ -1,3 +1,0 @@
-1;PROD-1;Frutillas;Balde;Grande;1.0;12;Disponible
-2;PROD-2;Frambuesas;Tarrina;Pequeño;1.0;0;No Disponible
-3;PROD-3;Arandano;Tarrina;Pequeño;2.5;3;Disponible

@@ -4,12 +4,13 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import models.Cliente;
 
 public class ClienteRepository {
 
-private final String archivo = "base_datos/clientes.txt";
+    private final String archivo = "base_datos/clientes.txt";
 
     public Cliente buscarPorId(String idBuscar) {
         try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
@@ -17,10 +18,11 @@ private final String archivo = "base_datos/clientes.txt";
             while ((linea = br.readLine()) != null) {
                 if (linea.trim().isEmpty()) continue;
                 String[] datos = linea.split(";");
-                if (datos.length < 7) continue;
+                if (datos.length < 8) continue;
                 if (datos[0].equals(idBuscar)) {
                     return new Cliente(datos[0], datos[1], datos[2],
-                            datos[3], datos[4], datos[5], datos[6]);
+                            datos[3], datos[4], datos[5], datos[6],
+                            LocalDate.parse(datos[7]));
                 }
             }
         } catch (Exception e) {
@@ -37,12 +39,12 @@ private final String archivo = "base_datos/clientes.txt";
             while ((linea = br.readLine()) != null) {
                 if (linea.trim().isEmpty()) continue;
                 String[] datos = linea.split(";");
-                if (datos.length < 7) continue;
+                if (datos.length < 8) continue;
                 if (datos[0].equals(cliente.getId())) {
                     lineas.add(cliente.getId() + ";" + cliente.getNombre() + ";"
                             + cliente.getApellido() + ";" + cliente.getCedula() + ";"
                             + cliente.getTelefono() + ";" + cliente.getDireccion() + ";"
-                            + cliente.getEstado());
+                            + cliente.getEstado() + ";" + cliente.getFechaCumpleanios());
                     encontrado = true;
                 } else {
                     lineas.add(linea);
@@ -68,9 +70,10 @@ private final String archivo = "base_datos/clientes.txt";
             while ((linea = br.readLine()) != null) {
                 if (linea.trim().isEmpty()) continue;
                 String[] datos = linea.split(";");
-                if (datos.length < 7) continue;
+                if (datos.length < 8) continue;
                 lista.add(new Cliente(datos[0], datos[1], datos[2],
-                        datos[3], datos[4], datos[5], datos[6]));
+                        datos[3], datos[4], datos[5], datos[6],
+                        LocalDate.parse(datos[7])));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -84,7 +87,7 @@ private final String archivo = "base_datos/clientes.txt";
             pw.println(cliente.getId() + ";" + cliente.getNombre() + ";"
                     + cliente.getApellido() + ";" + cliente.getCedula() + ";"
                     + cliente.getTelefono() + ";" + cliente.getDireccion() + ";"
-                    + cliente.getEstado());
+                    + cliente.getEstado() + ";" + cliente.getFechaCumpleanios());
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -100,7 +103,7 @@ private final String archivo = "base_datos/clientes.txt";
             while ((linea = br.readLine()) != null) {
                 if (linea.trim().isEmpty()) continue;
                 String[] datos = linea.split(";");
-                if (datos.length < 7) continue;
+                if (datos.length < 8) continue;
                 if (!datos[0].equals(idEliminar)) {
                     lineas.add(linea);
                 } else {
@@ -121,7 +124,7 @@ private final String archivo = "base_datos/clientes.txt";
     }
 
     public String generarNuevoID() {
-        int ultimoID = 999;
+        int ultimoID = 0;
         try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
             String linea;
             while ((linea = br.readLine()) != null) {
@@ -134,6 +137,23 @@ private final String archivo = "base_datos/clientes.txt";
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return String.valueOf(ultimoID + 1);
+        return String.format("%04d", ultimoID + 1);
+    }
+    
+    public boolean existeCedula(String cedulaBuscar, String idActual) {
+        try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                if (linea.trim().isEmpty()) continue;
+                String[] datos = linea.split(";");
+                if (datos.length < 8) continue;
+                if (datos[3].equals(cedulaBuscar) && !datos[0].equals(idActual)) {
+                    return true; 
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }
