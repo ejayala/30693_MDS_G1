@@ -84,12 +84,8 @@ public class ClienteService {
             JOptionPane.showMessageDialog(vista, "Teléfono inválido, debe empezar con 09 y tener 10 dígitos");
             return false;
         }
-        if (!cedula.isEmpty() && !validarCedula(cedula)) {
+        if (!validarCedula(cedula)) {
             JOptionPane.showMessageDialog(vista, "Cédula ecuatoriana inválida");
-            return false;
-        }
-        if (vista.jd_fechaCumpleanios.getDate() == null) {
-            JOptionPane.showMessageDialog(vista, "Debe seleccionar una fecha de cumpleaños");
             return false;
         }
         if (dao.existeCedula(cedula, idActual)) {
