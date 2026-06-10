@@ -258,6 +258,7 @@ public class Frm_Principal extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(204, 255, 204));
         jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 153, 51), 3, true));
 
+        txt_IDcliente.setBackground(new java.awt.Color(204, 255, 204));
         txt_IDcliente.setFont(new java.awt.Font("Sylfaen", 2, 13)); // NOI18N
         txt_IDcliente.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt_IDcliente.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 0), 2, true), "ID CLIENTE  ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 102, 0))); // NOI18N
@@ -337,6 +338,9 @@ public class Frm_Principal extends javax.swing.JFrame {
         jd_fechaCumpleanios.setBackground(new java.awt.Color(255, 255, 255));
         jd_fechaCumpleanios.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 0), 2, true), "FECHA DE CUMPLEAÑOS   ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 102, 0))); // NOI18N
 
+        jButton1.setBackground(new java.awt.Color(0, 102, 0));
+        jButton1.setFont(new java.awt.Font("Segoe UI Black", 1, 13)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(204, 255, 204));
         jButton1.setText("CLIENTES POTENCIALES");
         jButton1.addActionListener(this::jButton1ActionPerformed);
 
@@ -383,7 +387,7 @@ public class Frm_Principal extends javax.swing.JFrame {
                                 .addComponent(txt_direccion, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
                                 .addComponent(jd_fechaCumpleanios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(137, 137, 137)
+                        .addGap(132, 132, 132)
                         .addComponent(jButton1)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 574, Short.MAX_VALUE)
@@ -426,9 +430,9 @@ public class Frm_Principal extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btn_buscarcli)
                             .addComponent(txt_IDclibuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton1)
-                        .addGap(0, 29, Short.MAX_VALUE))
+                        .addGap(0, 21, Short.MAX_VALUE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );

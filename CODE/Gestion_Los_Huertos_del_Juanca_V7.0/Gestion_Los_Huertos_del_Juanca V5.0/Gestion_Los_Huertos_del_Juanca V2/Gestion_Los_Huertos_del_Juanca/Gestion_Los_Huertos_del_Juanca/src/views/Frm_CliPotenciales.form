@@ -62,7 +62,7 @@
                           <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="btn_modificar" min="-2" max="-2" attributes="0"/>
-                              <Component id="bt_guardar" min="-2" max="-2" attributes="0"/>
+                              <Component id="btn_guardar" min="-2" max="-2" attributes="0"/>
                               <Component id="btn_eliminar" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -88,7 +88,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="txt_telefono" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="bt_guardar" min="-2" max="-2" attributes="0"/>
+                  <Component id="btn_guardar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btn_modificar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -148,7 +148,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="bt_guardar">
+        <Component class="javax.swing.JButton" name="btn_guardar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Guardar"/>
           </Properties>

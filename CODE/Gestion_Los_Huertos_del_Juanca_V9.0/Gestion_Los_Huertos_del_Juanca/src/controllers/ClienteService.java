@@ -130,8 +130,12 @@ public class ClienteService {
     private void guardarCliente() {
         if (!validarDatos(vista.txt_IDcliente.getText())) return;
         String estado = vista.btn_activo.isSelected() ? "Activo" : "Inactivo";
+        
+        java.time.LocalDate fechaCumple = null;
         java.util.Date fechaData = vista.jd_fechaCumpleanios.getDate();
-        java.time.LocalDate fechaCumple = new java.sql.Date(fechaData.getTime()).toLocalDate();
+        if (fechaData != null) {
+            fechaCumple = new java.sql.Date(fechaData.getTime()).toLocalDate();
+        }
 
         Cliente cliente = new Cliente(
                 vista.txt_IDcliente.getText(),
@@ -154,8 +158,12 @@ public class ClienteService {
     private void modificarCliente() {
         if (!validarDatos(vista.txt_IDcliente.getText())) return;
         String estado = vista.btn_activo.isSelected() ? "Activo" : "Inactivo";
+        
+        java.time.LocalDate fechaCumple = null;
         java.util.Date fechaData = vista.jd_fechaCumpleanios.getDate();
-        java.time.LocalDate fechaCumple = new java.sql.Date(fechaData.getTime()).toLocalDate();
+        if (fechaData != null) {
+            fechaCumple = new java.sql.Date(fechaData.getTime()).toLocalDate();
+        }
 
         Cliente cliente = new Cliente(
                 vista.txt_IDcliente.getText(),
@@ -214,7 +222,7 @@ public class ClienteService {
             modelo.addRow(new Object[]{
                 c.getId(), c.getNombre(), c.getApellido(),
                 c.getCedula(), c.getTelefono(), c.getDireccion(), c.getEstado(),
-                c.getFechaCumpleanios()
+                c.getFechaCumpleanios() != null ? c.getFechaCumpleanios() : ""
             });
         }
         vista.tbl_clientes.setModel(modelo);
@@ -237,7 +245,7 @@ public class ClienteService {
         vista.txt_IDcliente.setText(dao.generarNuevoID());
         vista.txt_IDcliente.setEnabled(false);
     }
-    
+
     private void verificarCumpleaniosHoy() {
         java.time.LocalDate hoy = java.time.LocalDate.now();
         int mesHoy = hoy.getMonthValue();
@@ -256,12 +264,12 @@ public class ClienteService {
             }
         }
     }
-    
+
     private void mostrarAlertaEsquina(String mensaje) {
         JOptionPane optionPane = new JOptionPane(mensaje, JOptionPane.INFORMATION_MESSAGE);
         javax.swing.JDialog dialogo = optionPane.createDialog(vista, "Alerta de Cumpleaños");
         dialogo.setLocation(10, 10);
         dialogo.setVisible(true);
         dialogo.dispose();
-}
+    }
 }

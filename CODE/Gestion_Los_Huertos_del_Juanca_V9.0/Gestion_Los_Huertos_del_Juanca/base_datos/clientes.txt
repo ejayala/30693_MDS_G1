@@ -1,2 +1,3 @@
 0001;Esteban;Cuichan;1755377635;0999663820;Pifo;Activo;2005-12-17
 0002;Juan;Altamirano;1709857039;0999999991;sdada;Activo;2026-06-09
+0003;Juan;Padilla;1713207395;0996623820;Sangolquí;Activo;null

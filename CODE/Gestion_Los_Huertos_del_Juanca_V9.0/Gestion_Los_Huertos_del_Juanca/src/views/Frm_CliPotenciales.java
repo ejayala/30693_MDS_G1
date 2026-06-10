@@ -40,24 +40,40 @@ public class Frm_CliPotenciales extends javax.swing.JFrame {
         btn_salir = new javax.swing.JButton();
         btn_limpiar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(153, 255, 204));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 102), 3, true), "CLIENTES POTENCIALES   ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 13), new java.awt.Color(0, 102, 102))); // NOI18N
 
+        txt_nombre.setBackground(new java.awt.Color(153, 255, 204));
         txt_nombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt_nombre.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "NOMBRE"));
+        txt_nombre.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 102), 2, true), "NOMBRE", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 12), new java.awt.Color(0, 102, 102))); // NOI18N
 
+        txt_apellido.setBackground(new java.awt.Color(153, 255, 204));
         txt_apellido.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt_apellido.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "APELLIDO"));
+        txt_apellido.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 102), 2, true), "APELLIDO", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 13), new java.awt.Color(0, 102, 102))); // NOI18N
+        txt_apellido.addActionListener(this::txt_apellidoActionPerformed);
 
+        txt_telefono.setBackground(new java.awt.Color(153, 255, 204));
         txt_telefono.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt_telefono.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "TELEFONO"));
+        txt_telefono.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 102), 2, true), "TELEFONO   ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 12), new java.awt.Color(0, 102, 102))); // NOI18N
 
-        btn_guardar.setText("Guardar");
+        btn_guardar.setBackground(new java.awt.Color(0, 102, 102));
+        btn_guardar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        btn_guardar.setForeground(new java.awt.Color(153, 255, 204));
+        btn_guardar.setText("GUARDAR");
 
-        btn_modificar.setText("Modificar");
+        btn_modificar.setBackground(new java.awt.Color(0, 102, 102));
+        btn_modificar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        btn_modificar.setForeground(new java.awt.Color(153, 255, 204));
+        btn_modificar.setText("MODIFICAR");
 
-        btn_eliminar.setText("Eliminar");
+        btn_eliminar.setBackground(new java.awt.Color(0, 102, 102));
+        btn_eliminar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        btn_eliminar.setForeground(new java.awt.Color(153, 255, 204));
+        btn_eliminar.setText("ELIMINAR");
+
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 102), 2, true), "TABLA DE CLIENTES POTENCIALES    ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 12), new java.awt.Color(0, 102, 102))); // NOI18N
 
         tbl_clientesPot.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -72,10 +88,17 @@ public class Frm_CliPotenciales extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tbl_clientesPot);
 
+        btn_salir.setBackground(new java.awt.Color(204, 0, 0));
+        btn_salir.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        btn_salir.setForeground(new java.awt.Color(255, 204, 204));
         btn_salir.setText("SALIR");
+        btn_salir.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 0, 0), 2, true));
         btn_salir.addActionListener(this::btn_salirActionPerformed);
 
-        btn_limpiar.setText("Limpiar");
+        btn_limpiar.setBackground(new java.awt.Color(0, 102, 102));
+        btn_limpiar.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        btn_limpiar.setForeground(new java.awt.Color(153, 255, 204));
+        btn_limpiar.setText("LIMPIAR");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -84,34 +107,36 @@ public class Frm_CliPotenciales extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(98, 98, 98)
+                        .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btn_modificar)
-                            .addComponent(btn_guardar)
-                            .addComponent(btn_eliminar)
-                            .addComponent(btn_limpiar)))
+                            .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(42, 42, 42)
+                        .addContainerGap()
+                        .addComponent(txt_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btn_modificar, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                            .addComponent(btn_guardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_eliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_limpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 517, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btn_salir)
-                .addGap(22, 22, 22))
+                .addComponent(btn_salir, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(66, 66, 66)
+                .addGap(72, 72, 72)
                 .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(txt_apellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(24, 24, 24)
                 .addComponent(txt_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btn_guardar)
@@ -125,7 +150,7 @@ public class Frm_CliPotenciales extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btn_salir)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -149,6 +174,10 @@ public class Frm_CliPotenciales extends javax.swing.JFrame {
     private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
         this.dispose();
     }//GEN-LAST:event_btn_salirActionPerformed
+
+    private void txt_apellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_apellidoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_apellidoActionPerformed
 
     /**
      * @param args the command line arguments

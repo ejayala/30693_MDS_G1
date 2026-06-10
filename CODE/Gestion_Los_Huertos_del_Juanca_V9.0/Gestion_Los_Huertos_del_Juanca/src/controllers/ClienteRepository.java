@@ -20,9 +20,12 @@ public class ClienteRepository {
                 String[] datos = linea.split(";");
                 if (datos.length < 8) continue;
                 if (datos[0].equals(idBuscar)) {
+                    LocalDate fecha = null;
+                    if (datos[7] != null && !datos[7].trim().isEmpty() && !datos[7].equals("null")) {
+                        fecha = LocalDate.parse(datos[7].trim());
+                    }
                     return new Cliente(datos[0], datos[1], datos[2],
-                            datos[3], datos[4], datos[5], datos[6],
-                            LocalDate.parse(datos[7]));
+                            datos[3], datos[4], datos[5], datos[6], fecha);
                 }
             }
         } catch (Exception e) {
@@ -41,10 +44,11 @@ public class ClienteRepository {
                 String[] datos = linea.split(";");
                 if (datos.length < 8) continue;
                 if (datos[0].equals(cliente.getId())) {
+                    String fechaStr = (cliente.getFechaCumpleanios() != null) ? cliente.getFechaCumpleanios().toString() : "null";
                     lineas.add(cliente.getId() + ";" + cliente.getNombre() + ";"
                             + cliente.getApellido() + ";" + cliente.getCedula() + ";"
                             + cliente.getTelefono() + ";" + cliente.getDireccion() + ";"
-                            + cliente.getEstado() + ";" + cliente.getFechaCumpleanios());
+                            + cliente.getEstado() + ";" + fechaStr);
                     encontrado = true;
                 } else {
                     lineas.add(linea);
@@ -71,9 +75,14 @@ public class ClienteRepository {
                 if (linea.trim().isEmpty()) continue;
                 String[] datos = linea.split(";");
                 if (datos.length < 8) continue;
+                
+                LocalDate fecha = null;
+                if (datos[7] != null && !datos[7].trim().isEmpty() && !datos[7].equals("null")) {
+                    fecha = LocalDate.parse(datos[7].trim());
+                }
+                
                 lista.add(new Cliente(datos[0], datos[1], datos[2],
-                        datos[3], datos[4], datos[5], datos[6],
-                        LocalDate.parse(datos[7])));
+                        datos[3], datos[4], datos[5], datos[6], fecha));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -84,10 +93,11 @@ public class ClienteRepository {
     public boolean guardarCliente(Cliente cliente) {
         try (FileWriter fw = new FileWriter(archivo, true);
              PrintWriter pw = new PrintWriter(fw)) {
+            String fechaStr = (cliente.getFechaCumpleanios() != null) ? cliente.getFechaCumpleanios().toString() : "null";
             pw.println(cliente.getId() + ";" + cliente.getNombre() + ";"
                     + cliente.getApellido() + ";" + cliente.getCedula() + ";"
                     + cliente.getTelefono() + ";" + cliente.getDireccion() + ";"
-                    + cliente.getEstado() + ";" + cliente.getFechaCumpleanios());
+                    + cliente.getEstado() + ";" + fechaStr);
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -139,7 +149,7 @@ public class ClienteRepository {
         }
         return String.format("%04d", ultimoID + 1);
     }
-    
+
     public boolean existeCedula(String cedulaBuscar, String idActual) {
         try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
             String linea;
@@ -148,7 +158,7 @@ public class ClienteRepository {
                 String[] datos = linea.split(";");
                 if (datos.length < 8) continue;
                 if (datos[3].equals(cedulaBuscar) && !datos[0].equals(idActual)) {
-                    return true; 
+                    return true;
                 }
             }
         } catch (Exception e) {

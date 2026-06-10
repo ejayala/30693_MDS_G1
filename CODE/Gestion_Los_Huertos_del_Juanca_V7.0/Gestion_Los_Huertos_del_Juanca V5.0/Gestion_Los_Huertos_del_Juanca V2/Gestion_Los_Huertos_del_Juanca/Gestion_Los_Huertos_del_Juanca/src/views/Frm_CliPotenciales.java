@@ -32,7 +32,7 @@ public class Frm_CliPotenciales extends javax.swing.JFrame {
         txt_nombre = new javax.swing.JTextField();
         txt_apellido = new javax.swing.JTextField();
         txt_telefono = new javax.swing.JTextField();
-        bt_guardar = new javax.swing.JButton();
+        btn_guardar = new javax.swing.JButton();
         btn_modificar = new javax.swing.JButton();
         btn_eliminar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -52,7 +52,7 @@ public class Frm_CliPotenciales extends javax.swing.JFrame {
         txt_telefono.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt_telefono.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "TELEFONO"));
 
-        bt_guardar.setText("Guardar");
+        btn_guardar.setText("Guardar");
 
         btn_modificar.setText("Modificar");
 
@@ -91,7 +91,7 @@ public class Frm_CliPotenciales extends javax.swing.JFrame {
                         .addGap(98, 98, 98)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btn_modificar)
-                            .addComponent(bt_guardar)
+                            .addComponent(btn_guardar)
                             .addComponent(btn_eliminar))))
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 517, Short.MAX_VALUE)
@@ -111,7 +111,7 @@ public class Frm_CliPotenciales extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(txt_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(bt_guardar)
+                .addComponent(btn_guardar)
                 .addGap(18, 18, 18)
                 .addComponent(btn_modificar)
                 .addGap(18, 18, 18)
@@ -171,8 +171,8 @@ public class Frm_CliPotenciales extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bt_guardar;
     private javax.swing.JButton btn_eliminar;
+    private javax.swing.JButton btn_guardar;
     private javax.swing.JButton btn_modificar;
     private javax.swing.JButton btn_salir;
     private javax.swing.JPanel jPanel1;
