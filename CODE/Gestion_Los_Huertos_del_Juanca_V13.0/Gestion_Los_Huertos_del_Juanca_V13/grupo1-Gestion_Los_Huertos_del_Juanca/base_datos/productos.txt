@@ -1,0 +1,6 @@
+2;PROD-2;Frutilla;Balde 12 kg;Grande;16.0;2;Disponible;C:\Users\User\Downloads\frutilla grande.jpg
+3;PROD-3;Frutilla;Balde 12 kg;Media;12.0;5;Disponible;
+4;PROD-4;Frutilla;Tarrina 500 gr;Pequeña;1.0;12;Disponible;C:\Users\User\Downloads\frutilla tarrina.jpg
+5;PROD-5;Arándanos;Tarrina 125 gr;Pequeña;1.75;7;Disponible;C:\Users\User\Downloads\arandanos tarrina.jpg
+6;PROD-6;Frambuesa;Tarrina 125 gr;Pequeña;1.5;7;Disponible;C:\Users\User\Downloads\fambruesa tarrina.png
+7;PROD-7;Miel;Frasco 100 ml;Pequeña;12.0;4;Disponible;C:\Users\User\Downloads\miel.jpg
