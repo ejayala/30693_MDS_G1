@@ -1,0 +1,1 @@
+1;PROD-1;Frutillas;Tarrina;Pequeño;20.0;4;Disponible
