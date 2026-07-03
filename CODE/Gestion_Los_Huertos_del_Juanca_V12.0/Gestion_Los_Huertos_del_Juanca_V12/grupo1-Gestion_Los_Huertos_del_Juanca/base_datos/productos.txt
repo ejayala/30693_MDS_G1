@@ -1,0 +1,4 @@
+1;PROD-1;Frutillas;Tarrina;Pequeño;20.0;4;Disponible
+2;PROD-2;Arandanos;Balde;Mediano;20.0;2;Disponible
+3;PROD-3;Frutilla;Tarrina;Mediano;20.0;5;Disponible
+4;PROD-4;Frutilla;Balde;Grande;1.0;50;Disponible
