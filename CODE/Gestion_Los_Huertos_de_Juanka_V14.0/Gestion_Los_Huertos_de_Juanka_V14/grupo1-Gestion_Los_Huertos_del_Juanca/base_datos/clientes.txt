@@ -1,0 +1,5 @@
+0001;Johan;Catota;1752842086;0958767673;El Recreo;Activo;2005-11-25
+0002;Eatan;Maldonado;1753039948;0984204578;Carapungo;Activo;2006-02-14
+0003;Esteban;Cuichan;1755377635;0986876745;Pifo;Inactivo;2006-07-07
+0004;Johan;Alvarez;1751158971;0985767675;El recreo;Inactivo;2007-07-05
+0005;Eatan;Ayala;;0987567676;Carapungo;Activo;2026-07-08

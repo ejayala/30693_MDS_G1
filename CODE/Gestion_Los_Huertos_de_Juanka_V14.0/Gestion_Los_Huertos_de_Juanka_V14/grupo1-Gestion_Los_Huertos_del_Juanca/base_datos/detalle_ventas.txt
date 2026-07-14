@@ -1,0 +1,4 @@
+V0001;PROD-7;Miel;2;12.0
+V0002;PROD-4;Frutilla;3;1.0
+V0002;PROD-2;Frutilla;2;16.0
+V0003;PROD-4;Frutilla;4;1.0
