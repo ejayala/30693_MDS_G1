@@ -1,0 +1,8 @@
+1;PROD-1;Frutilla;Balde 12 kg;Extra Grande;20.0;11;Disponible;Frutilla_Extra_Grande.jpg
+2;PROD-2;Frutilla;Balde 12 kg;Grande;16.0;7;Disponible;frutilla_grande.jpg
+3;PROD-3;Frutilla;Balde 12 kg;Media;12.0;5;Disponible;
+4;PROD-4;Frutilla;Balde 12 kg;Pequeña;10.0;3;Disponible;frutilla_grande.jpg
+5;PROD-5;Frutilla;Tarrina 500 gr;Pequeña;1.0;3;Disponible;frutilla_tarrina.jpg
+6;PROD-6;Arándanos;Tarrina 125 gr;Pequeña;1.75;5;Disponible;arandanos_tarrina.jpg
+7;PROD-7;Frambuesa;Tarrina 125 gr;Pequeña;1.5;6;Disponible;fambruesa_tarrina.png
+8;PROD-8;Miel;Frasco 100 ml;Grande;13.0;15;Disponible;miel.jpg
