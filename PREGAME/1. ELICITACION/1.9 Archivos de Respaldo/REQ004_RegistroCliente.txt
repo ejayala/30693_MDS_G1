@@ -1,0 +1,64 @@
+@startuml
+/'
+METADATOS DE TRAZABILIDAD
+Prompt original: "El sistema 'Los Huertos del JuanK' deberá permitir al Administrador 
+registrar un cliente mediante la captura de su cédula, nombre, apellido, teléfono, 
+dirección y fecha de cumpleaños, asignando inicialmente el estado Activo al nuevo registro."
+Actor primario: Administrador
+Módulo: REQ-004 Registro de Clientes
+'/
+
+skinparam classAttributeIconSize 0
+
+enum EstadoCliente {
+    ACTIVO
+    INACTIVO
+}
+
+class Cliente {
+    - cedula: String
+    - nombre: String
+    - apellido: String
+    - telefono: String
+    - direccion: String
+    - fechaCumpleanos: LocalDate
+    - estado: EstadoCliente
+    + Cliente(cedula: String, nombre: String, apellido: String, telefono: String, direccion: String, fechaCumpleanos: LocalDate)
+    + getCedula(): String
+    + getNombre(): String
+    + getApellido(): String
+    + getTelefono(): String
+    + getDireccion(): String
+    + getFechaCumpleanos(): LocalDate
+    + getEstado(): EstadoCliente
+    + setTelefono(telefono: String): void
+    + setDireccion(direccion: String): void
+    + setEstado(estado: EstadoCliente): void
+}
+
+class ValidadorCliente {
+    + {static} validarCedula(cedula: String): boolean
+    + {static} validarTelefono(telefono: String): boolean
+    + {static} validarCamposCompletos(c: Cliente): boolean
+}
+
+class ClienteRepositorioExcel {
+    - rutaArchivo: String
+    + ClienteRepositorioExcel(rutaArchivo: String)
+    + registrar(cliente: Cliente): boolean
+    + existeCedula(cedula: String): boolean
+    + obtenerClientes(): List<Cliente>
+}
+
+class ClienteControlador {
+    - repositorio: ClienteRepositorioExcel
+    + ClienteControlador(repositorio: ClienteRepositorioExcel)
+    + registrarCliente(cedula: String, nombre: String, apellido: String, telefono: String, direccion: String, cumpleanos: LocalDate): boolean
+}
+
+Cliente --> EstadoCliente
+ClienteControlador --> Cliente : gestiona
+ClienteControlador --> ClienteRepositorioExcel : persiste
+ClienteControlador ..> ValidadorCliente : valida
+ClienteRepositorioExcel ..> Cliente : lee / escribe
+@enduml
